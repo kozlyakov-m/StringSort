@@ -12,13 +12,17 @@ public class Main {
             args = in.nextLine().split(" "); //считываем строку и разделяем на слова
         }
 
-        printCounts(args);
+        List<Pair>result = frequencySort(args);
+
+        for (Pair p: result) {
+            System.out.println(p.getWord()+": "+p.getCounter());
+        }
     }
 
-    private static void printCounts(String[] message) {
+    public static List<Pair> frequencySort(String[] message) {
 
 
-        List<Pair> result = new ArrayList<Pair>();
+        List<Pair> result = new ArrayList<>();
 
         for (String word:message) {
             boolean nothingFound = true;
@@ -33,9 +37,6 @@ public class Main {
         }
 
         Collections.sort(result);
-
-        for (Pair p: result) {
-            System.out.println(p.getWord()+": "+p.getCounter());
-        }
+        return result;
     }
 }
